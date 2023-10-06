@@ -1,4 +1,4 @@
-# Shell Script
+# Script/small program:
 
 Given the access log file, we need to know:
 -  Top 5  ips that visited the server

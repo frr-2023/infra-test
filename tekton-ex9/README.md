@@ -1,5 +1,5 @@
 # Writing a Tekton Pipeline for Building a Docker Container
-Documentation checked
+Documentation checked. The manifests were taken from the examples.
 https://tekton.dev/docs/installation/pipelines/
 https://tekton.dev/docs/how-to-guides/kaniko-build-push/
 https://hub.tekton.dev/tekton/task/kaniko
