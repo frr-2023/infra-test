@@ -1,0 +1,22 @@
+statefulset:
+  replicas: 1
+  image:
+    repository: registry.k8s.io/nginx-slim
+    tag: 0.8
+  resources:
+    limits:
+      cpu: 1
+      memory: "128Mi"
+    requests:
+      cpu: "500m"
+      memory: "64Mi"
+  env: LIVE
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "standard"
+      resources:
+        requests:
+          storage: 1Gi

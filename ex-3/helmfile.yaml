@@ -1,0 +1,6 @@
+charts:
+  - name: infra-test-app
+    namespace: infra-test
+    chart: ../ex-2/
+    values:
+    - ../ex-2/values.yaml

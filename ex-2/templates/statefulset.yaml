@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+  labels:
+    {{- include "businessLabels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+    {{- include "businessLabels" . | nindent 6 }}
+  serviceName: "nginx"
+  replicas: {{ .Values.statefulset.replicas }}
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+      {{- include "businessLabels" . | nindent 8 }}
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.statefulset.image.repository }}:{{ .Values.statefulset.image.tag }}"
+        {{- with .Values.statefulset.resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+  {{- with .Values.statefulset.volumeClaimTemplates }}
+  volumeClaimTemplates:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
